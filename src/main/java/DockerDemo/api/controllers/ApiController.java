@@ -1,4 +1,4 @@
-package DockerDemo.api.controllers;
+package docker.demo.api.controllers;
 
 import org.springframework.web.bind.annotation.RequestMapping;
 
