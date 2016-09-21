@@ -8,6 +8,6 @@ node('master'){
 
     stage 'Build Jar'
 
-        sh "gradle assemble -pBranch=${env.BRANCH_NAME}"
+        sh "./gradlew assemble -pBranch=${env.BRANCH_NAME}"
 
 }
