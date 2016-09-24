@@ -17,7 +17,7 @@ node('swarm'){
     stage 'Build Container'
 
         sh "cp build/libs/dockerdemo*.jar Docker/"
-        sh "docker build -t ${BRANCH_NAME}-java-example-app ./Docker/"
+        sh "docker build -t ${env.BRANCH_NAME}-java-example-app ./Docker/"
 
     stage 'Start Containers'
 
