@@ -12,7 +12,7 @@ node('swarm'){
 
     stage 'Stop containers (optionally)'
 
-        sh 'disabled for now'
+        sh 'echo disabled for now'
 
     stage 'Build Container'
 
