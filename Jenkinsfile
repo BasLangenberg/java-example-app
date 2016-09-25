@@ -12,12 +12,13 @@ node('swarm'){
 
     stage 'Stop containers (optionally)'
 
-        sh "bash Docker/cleanup.sh ${env.BRANCH_NAME}"
+        sh "docker service rm ${env.BRANCH_NAME}-java-example-app"
 
     stage 'Build Container'
 
         sh "cp build/libs/dockerdemo*.jar Docker/"
         sh "docker build -t ${env.BRANCH_NAME}-java-example-app-${env.BUILD_NUMBER} ./Docker/"
+        sh "docker tag ${env.BRANCH_NAME}-java-example-app-${env.BUILD_NUMBER} swarm.brycks.nl:5000/${env.BRANCH_NAME}-java-example-app-${env.BUILD_NUMBER}"
 
     stage 'Start Containers'
 
