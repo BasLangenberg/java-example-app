@@ -19,6 +19,7 @@ node('swarm'){
         sh "cp build/libs/dockerdemo*.jar Docker/"
         sh "docker build -t ${env.BRANCH_NAME}-java-example-app-${env.BUILD_NUMBER} ./Docker/"
         sh "docker tag ${env.BRANCH_NAME}-java-example-app-${env.BUILD_NUMBER} swarm.brycks.nl:5000/${env.BRANCH_NAME}-java-example-app-${env.BUILD_NUMBER}"
+        sh "docker push swarm.brycks.nl:5000/${env.BRANCH_NAME}-java-example-app-${env.BUILD_NUMBER}" 
 
     stage 'Start Containers'
 
