@@ -12,7 +12,7 @@ node('swarm'){
 
     stage 'Stop containers (optionally)'
 
-        sh 'Docker/cleanup.sh ${env.BRANCH_NAME}'
+        sh "bash Docker/cleanup.sh ${env.BRANCH_NAME}"
 
     stage 'Build Container'
 
