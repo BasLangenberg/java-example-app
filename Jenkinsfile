@@ -27,7 +27,7 @@ node('swarm'){
         sh "docker network create --driver overlay ${env.BRANCH_NAME}-java-example-app || true"
         sh "docker service create --name ${env.BRANCH_NAME}-java-example-app --network proxy --network ${env.BRANCH_NAME}-java-example-app  --mode global swarm.brycks.nl:5000/${env.BRANCH_NAME}-java-example-app-${env.BUILD_NUMBER}"
         sh """
-            curl \\"swarm.brycks.nl:8080/v1/docker-flow-proxy/reconfigure?serviceName=${env.BRANCH_NAME}-java-example-app\&servicePath=/${env.BRANCH_NAME}\&port=8080\\"
+            curl \\"swarm.brycks.nl:8080/v1/docker-flow-proxy/reconfigure?serviceName=${env.BRANCH_NAME}-java-example-app\\&servicePath=/${env.BRANCH_NAME}\\&port=8080\\"
         """
 
 
