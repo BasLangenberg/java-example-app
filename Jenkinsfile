@@ -12,7 +12,7 @@ node('swarm'){
 
     stage 'Stop containers (optionally)'
 
-        sh "docker service rm ${env.BRANCH_NAME}-java-example-app"
+        sh "docker service rm ${env.BRANCH_NAME}-java-example-app || true"
 
     stage 'Build Container'
 
@@ -22,6 +22,6 @@ node('swarm'){
 
     stage 'Start Containers'
 
-        sh "echo disabled for now"
+        sh "docker service create --name ${env.BRANCH_NAME}-java-example-app --mode global swarm.brycks.nl:5000/${env.BRANCH_NAME}-java-example-app-${env.BUILD_NUMBER}"
 
 }
