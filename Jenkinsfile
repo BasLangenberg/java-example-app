@@ -12,12 +12,12 @@ node('swarm'){
 
     stage 'Stop containers (optionally)'
 
-        sh 'echo disabled for now'
+        sh 'Docker/cleanup.sh ${env.BRANCH_NAME}'
 
     stage 'Build Container'
 
         sh "cp build/libs/dockerdemo*.jar Docker/"
-        sh "docker build -t ${env.BRANCH_NAME}-java-example-app ./Docker/"
+        sh "docker build -t ${env.BRANCH_NAME}-java-example-app-${env.BUILD_NUMBER} ./Docker/"
 
     stage 'Start Containers'
 
